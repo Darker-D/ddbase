@@ -4,6 +4,7 @@ go 1.13
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
+	github.com/IBM/sarama v1.42.1 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.1.0+incompatible
 	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
 	github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd // indirect
@@ -30,12 +31,11 @@ require (
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/smartystreets/goconvey v1.7.2
 	github.com/streadway/amqp v1.0.0
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.8.4
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/uber/jaeger-lib v2.2.0+incompatible // indirect
 	go.uber.org/atomic v1.7.0
 	go.uber.org/zap v1.19.1
-	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v9 v9.31.0
