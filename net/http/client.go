@@ -3,6 +3,7 @@ package http
 import (
 	"bytes"
 	"context"
+	"encoding/xml"
 	"fmt"
 	"io"
 	"net"
@@ -221,6 +222,33 @@ func (client *Client) PostJson(c context.Context, uri string, params interface{}
 	const (
 		_contentType = "Content-Type"
 		_urlencoded  = "application/json;charset=utf-8"
+		_userAgent   = "User-Agent"
+	)
+	req.Header.Set(_contentType, _urlencoded)
+
+	req.Header.Set(_userAgent, _noKickUserAgent)
+
+	for k, v := range headers {
+		req.Header.Set(k, v)
+	}
+
+	return client.Do(c, req, res)
+}
+
+// PostXml issues a Post xml to the specified URL.
+func (client *Client) PostXml(c context.Context, uri string, params interface{}, headers map[string]string, res interface{}) (err error) {
+	dataBytes, err := xml.Marshal(params)
+	if err != nil {
+		return
+	}
+	req, err := xhttp.NewRequest(xhttp.MethodPost, uri, bytes.NewBuffer(dataBytes))
+	if err != nil {
+		err = pkgerr.Wrapf(err, "method:%s,uri:%s", xhttp.MethodPost, uri)
+		return
+	}
+	const (
+		_contentType = "Content-Type"
+		_urlencoded  = "text/plain;charset=utf-8"
 		_userAgent   = "User-Agent"
 	)
 	req.Header.Set(_contentType, _urlencoded)
